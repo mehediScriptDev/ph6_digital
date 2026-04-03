@@ -1,5 +1,6 @@
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
+import { RiLoginCircleLine } from "react-icons/ri";
 
 const Navbar = () => {
   const links = [
@@ -46,9 +47,22 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
+              <div className=" flex flex-col items-center gap-2">
+                <div className="divider -mb-1"></div>
+                <a href="btn">
+                  {" "}
+                  <FiShoppingCart />{" "}
+                </a>
+                <a className="text-base font-semibold text-[#101727]" href="">
+                  Login
+                </a>
+                <a className="btn btn-sm w-full rounded-full text-sm font-semibold bg-linear-to-r from-primary to-another text-white">
+                  Get Started
+                </a>
+              </div>
             </ul>
           </div>
-          <p className="bg-clip-text text-transparent text-[48px] bg-linear-to-r from-primary to-secondary font-bold">
+          <p className="leading-relaxed bg-clip-text h-auto text-transparent text-2xl sm:text-4xl lg:text-[48px] bg-linear-to-r from-primary to-another font-bold ">
             DigiTools
           </p>
         </div>
@@ -57,15 +71,23 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className="navbar-end flex items-center gap-4">
-          <a href="btn">
+        <div className="navbar-end hidden md:flex items-center gap-4">
+          <a href="btn ">
             {" "}
             <FiShoppingCart />{" "}
           </a>
           <a className="text-base font-semibold text-[#101727]" href="">
             Login
           </a>
-          <a className="btn rounded-full text-base font-semibold bg-linear-to-r from-primary to-secondary text-white">
+          <a className="btn btn-lg rounded-full text-base font-semibold bg-linear-to-r from-primary to-another text-white">
+            Get Started
+          </a>
+        </div>
+        <div className="navbar-end md:hidden flex items-center gap-4">
+          <button className="flex items-center font-semibold gap-1 text-base">
+            <RiLoginCircleLine /> Login
+          </button>
+          <a className="btn btn-md hidden sm:flex rounded-full text-base font-semibold bg-linear-to-r from-primary to-another text-white">
             Get Started
           </a>
         </div>
