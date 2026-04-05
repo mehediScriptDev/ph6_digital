@@ -10,13 +10,13 @@ const Pricing = () => {
 
                 <div className="mt-10 flex flex-col lg:flex-row gap-6 items-stretch">
                     
-                    <div className="card flex-1 rounded-xl shadow-md border bg-base-100">
-                        <div className="p-6 h-full flex flex-col justify-between">
+                    <div className="card flex-1 rounded-xl! shadow-md  bg-base-100">
+                        <div className="p-6 h-full flex flex-col items-start border border-gray-200 rounded-xl bg-[#F9FAFC] justify-between">
                             <div>
-                                <h3 className="text-xl font-semibold text-slate-900">Starter</h3>
+                                <h3 className="text-xl font-semibold text-left text-slate-900">Starter</h3>
                                 <p className="mt-2 text-sm text-slate-500">Perfect for getting started</p>
 
-                                <div className="mt-6 text-3xl font-extrabold text-slate-900">$0<span className="text-base font-medium text-slate-500">/Month</span></div>
+                                <div className="mt-6 text-3xl text-left font-extrabold text-slate-900">$0<span className="text-base font-medium text-slate-500">/Month</span></div>
 
                                 <ul className="mt-6 space-y-3 text-sm text-slate-600">
                                     <li className="flex items-start gap-3"><MdDone className="w-4 h-4 text-emerald-500 mt-1" />Access to 10 free tools</li>
@@ -26,20 +26,21 @@ const Pricing = () => {
                                 </ul>
                             </div>
 
-                            <div className="mt-6">
+                            <div className="mt-6 w-full">
                                 <button style={{background: 'linear-gradient(90deg, var(--color-primary), var(--color-another))'}} className="w-full text-white py-3 rounded-full text-sm font-medium">Get Started Free</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex-1 rounded-xl overflow-hidden shadow-lg">
-                        <div style={{background: 'linear-gradient(180deg, var(--color-primary), var(--color-another))'}} className="p-6 h-full text-white flex flex-col justify-between">
+                    <div className="flex-1 relative  rounded-xl! overflow-visible shadow-lg">
+                        <div className="p-6 h-full bg-linear-to-r from-primary to-another text-white flex flex-col justify-between relative rounded-xl">
+                            <div className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 mx-auto rounded-full text-xs font-medium -mt-9">Most Popular</div>
                             <div>
-                                <div className="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">Most Popular</div>
-                                <h3 className="mt-4 text-2xl font-semibold">Pro</h3>
-                                <p className="mt-2 text-sm text-white/90">Best for professionals</p>
+                                
+                                <h3 className="mt-4 text-2xl text-left font-semibold">Pro</h3>
+                                <p className="mt-2 text-sm text-white/90 text-left">Best for professionals</p>
 
-                                <div className="mt-6 text-4xl font-extrabold">$29<span className="text-base font-medium text-white/90">/Month</span></div>
+                                <div className="mt-6 text-4xl font-extrabold text-left">$29<span className="text-base font-medium text-white/90">/Month</span></div>
 
                                 <ul className="mt-6 space-y-3 text-sm text-white/90">
                                     <li className="flex items-start gap-3"><MdDone className="w-4 h-4 text-white mt-1" />Access to all premium tools</li>
@@ -57,15 +58,15 @@ const Pricing = () => {
                         </div>
                     </div>
 
-                    <div className="card flex-1 rounded-xl shadow-md border bg-base-100">
+                    <div className="card flex-1 rounded-xl shadow-md border border-gray-200 bg-[#F9FAFC]">
                         <div className="p-6 h-full flex flex-col justify-between">
                             <div>
-                                <h3 className="text-xl font-semibold text-slate-900">Enterprise</h3>
-                                <p className="mt-2 text-sm text-slate-500">For teams and businesses</p>
+                                <h3 className="text-xl font-semibold text-slate-900 text-left">Enterprise</h3>
+                                <p className="mt-2 text-sm text-slate-500 text-left">For teams and businesses</p>
 
-                                <div className="mt-6 text-3xl font-extrabold text-slate-900">$99<span className="text-base font-medium text-slate-500">/Month</span></div>
+                                <div className="mt-6 text-3xl font-extrabold text-slate-900 text-left">$99<span className="text-base font-medium text-slate-500">/Month</span></div>
 
-                                <ul className="mt-6 space-y-3 text-sm text-slate-600">
+                                <ul className="mt-6 space-y-3 text-sm text-slate-600 text-left">
                                     <li className="flex items-start gap-3"><MdDone className="w-4 h-4 text-emerald-500 mt-1" />Everything in Pro</li>
                                     <li className="flex items-start gap-3"><MdDone className="w-4 h-4 text-emerald-500 mt-1" />Team collaboration</li>
                                     <li className="flex items-start gap-3"><MdDone className="w-4 h-4 text-emerald-500 mt-1" />Custom integrations</li>
