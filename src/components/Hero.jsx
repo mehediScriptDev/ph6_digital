@@ -35,7 +35,7 @@ const Hero = () => {
                 Explore Products
               </a>
 
-              <div className="rounded-full p-[2px] bg-gradient-to-r from-another to-primary">
+              <div className="rounded-full p-0.5 bg-linear-to-r from-another to-primary">
                 <button className="flex items-center gap-2 rounded-full bg-white px-5 py-2 text-primary text-sm font-medium">
                   <CiPlay1 />
                   <span>Watch Demo</span>
