@@ -30,7 +30,7 @@ const Hero = () => {
          
               <a
                 href="#"
-                className="inline-flex items-center justify-center rounded-full px-6 py-3 bg-gradient-to-r from-primary to-another text-white shadow-lg text-sm font-medium"
+                className="inline-flex items-center justify-center rounded-full px-6 py-3 bg-linear-to-r from-primary to-another text-white shadow-lg text-sm font-medium"
               >
                 Explore Products
               </a>

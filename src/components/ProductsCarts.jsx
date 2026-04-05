@@ -50,10 +50,16 @@ const ProductCard = ({ p, isAdded, onAdd }) => (
     </div>
 );
 
-const ProductsCarts = ({ cart = [], onAddToCart }) => {
+const ProductsCarts = ({ cart = [], onAddToCart, onRemoveFromCart }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('products');
+    const [toast, setToast] = useState({ show: false, msg: '' });
+
+    const showToast = (message) => {
+        setToast({ show: true, msg: message });
+        setTimeout(() => setToast({ show: false, msg: '' }), 3000);
+    };
 
     useEffect(() => {
         let mounted = true;
@@ -99,39 +105,65 @@ const ProductsCarts = ({ cart = [], onAddToCart }) => {
                     {activeTab === 'products' && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {loading && <div className="col-span-full text-sm text-slate-500">Loading products...</div>}
-                            {!loading && products.map((p) => (
-                                <ProductCard key={p.id} p={p} isAdded={!!cart.find(c => c.id === p.id)} onAdd={onAddToCart} />
+                                {!loading && products.map((p) => (
+                                <ProductCard
+                                    key={p.id}
+                                    p={p}
+                                    isAdded={!!cart.find(c => c.id === p.id)}
+                                    onAdd={(prod) => {
+                                        const added = onAddToCart(prod);
+                                        if (added) showToast('Successfully added to cart');
+                                        else showToast('Already in cart');
+                                    }}
+                                />
                             ))}
                         </div>
                     )}
 
                     {activeTab === 'cart' && (
                         <div className="max-w-4xl mx-auto">
-                            {cart.length === 0 ? (
-                                <div className="py-12 text-center text-slate-500">No items in cart.</div>
-                            ) : (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {cart.map((p) => (
-                                        <div key={p.id} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
-                                                    <img src={p.image} alt={p.title} className="w-8 h-8" />
-                                                </div>
-                                                <div className="flex-1 text-left">
-                                                    <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
-                                                    <div className="text-sm text-slate-500">${p.price}/{p.frequency}</div>
-                                                </div>
-                                                <div className="ml-4 shrink-0 w-24">
-                                                    <button className="w-full bg-emerald-500 text-white py-2 rounded-full text-sm font-medium" disabled>Added</button>
-                                                </div>
-                                            </div>
+                                    {cart.length === 0 ? (
+                                        <div className="py-12 text-center text-slate-500">No items in cart.</div>
+                                    ) : (
+                                        <div className="mt-4 w-full max-w-3xl mx-auto">
+                                            <ul className="space-y-4 text-left">
+                                                {cart.map((p) => (
+                                                    <li key={p.id} className="flex items-center justify-between rounded-xl border border-gray-200 bg-white p-4">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+                                                                <img src={p.image} alt={p.title} className="w-8 h-8" />
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-sm font-semibold text-slate-900">{p.title}</div>
+                                                                <div className="text-xs text-slate-500">${p.price}/{p.frequency}</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex items-center gap-3">
+                                                            <button
+                                                                onClick={() => {
+                                                                    onRemoveFromCart && onRemoveFromCart(p.id);
+                                                                    showToast('Removed from cart');
+                                                                }}
+                                                                className="px-4 py-2 rounded-md bg-red-50 text-red-600 text-sm font-medium"
+                                                            >
+                                                                Remove
+                                                            </button>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                    ))}
-                                </div>
-                            )}
+                                    )}
                         </div>
                     )}
                 </div>
+                {/* Toast */}
+                {toast.show && (
+                    <div className="fixed right-6 top-6 z-50">
+                        <div className="bg-slate-900 text-white px-4 py-2 rounded-lg shadow-lg">{toast.msg}</div>
+                    </div>
+                )}
             </div>
         </section>
     );

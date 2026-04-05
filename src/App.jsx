@@ -13,10 +13,19 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (product) => {
+    let added = false;
     setCart((prev) => {
-      if (prev.find((p) => p.id === product.id)) return prev;
+      if (prev.find((p) => p.id === product.id)) {
+        added = false;
+        return prev;
+      }
+      added = true;
       return [...prev, product];
     });
+    return added;
+  };
+  const handleRemoveFromCart = (productId) => {
+    setCart((prev) => prev.filter((p) => p.id !== productId));
   };
 
   return (
@@ -25,7 +34,7 @@ function App() {
         <Navbar />
         <Hero />
         <Stats/>
-        <ProductsCarts cart={cart} onAddToCart={handleAddToCart} />
+        <ProductsCarts cart={cart} onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
         <Steps/>
         <Pricing/>
         <Cta/>
